@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>{% block title %}Moni-K  Nails{% endblock %}</title>
+        <meta name="description" content="Prothésiste ongulaire diplômée et certifiée, propose des poses de vernis, vernis semi permanent, gel et soins professionnels à votre domicile dans le secteur de Châtenay-Malabry (92) et ses alentours.." />
+        <!-- Bootstrap4 CSS + Font Awesome -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Architects+Daughter&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{{ asset('/css/styles.css') }}">
+        {% block stylesheets %}{% endblock %}
+    </head>
+    <body>
+
+      <header>
+        <div class="logo">
+        <a href="#"><img src="{{ asset('/images/logo.jpg') }}" alt="logo"></a>
+        </div>
+
+      <nav class="navbar navbar-expand-sm navbar-dark ">
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav mx-auto ">
+            <li class="nav-item active">
+              <a class="nav-link" href="{{ path('homepage') }}">Accueil <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ path('tarifs') }}">Tarifs</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ path('galerie') }}">Galerie</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ path('contact') }}">Contact</a>
+            </li>
+            {% if is_granted('ROLE_ADMIN') %}
+				    <!-- Menu admin -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Gestion
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="{{ path('admin_tarif') }}">Tarifs</a>
+                <a class="dropdown-item" href="{{ path('admin_galerie') }}">Galerie</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="{{ path('deconnexion') }}">Déconnexion</a>
+              </div>
+            </li>
+            {% endif %}
+          </ul>
+        </div>
+      </nav>
+      </header>
+
+     
+
+        {# Boucle pour afficher les messages d'erreur #}
+        {% for message in app.flashes('errors') %}
+        <div class="alert alert-success">{{ message }}</div>
+        {% endfor %}
+
+
+        {# Boucle pour afficher les messages de succès #}
+        {% for message in app.flashes('success') %}
+        <div class="alert alert-success">{{ message }}</div>
+        {% endfor %}
+
+        {# Déclaration du block de contenu principal #}
+        {% block content %}
+        {% endblock %}
+        
+
+
+        <footer class="text-center py-3 text-light">
+        <div class="row">
+          <div class="bloc-footer col-4">
+          <b>Informations</b><hr>
+          <a href="{{ path('mentions_legales') }}">Mentions légales et politique de confidentialité</a>
+          </div>
+          <div class="bloc-footer col-4">
+          <b>Contact</b><hr>
+          <div class="contact">
+          <ul>
+          <li><i class="fas fa-phone"></i> : 07.81.80.08.63</li>
+          <li>Du lundi au samedi de 9h30 à 20h00</li>
+          <li><a href="{{ path('contact') }}">Formulaire de contact</a></li>
+          </ul>
+          </div>
+        </div>
+        <div class="bloc-footer col-4">
+        <b>Suivez moi</b><hr>
+        <div class="reseaux-sociaux">
+         <a href="https://www.facebook.com/Moni-K-Nails-by-Monica-336406000392588/?hc_ref=ART0ZfGqrog54IXeSbObBEUfLbxD_fSWWzpc8FdnLhDbGZurvV0xdtefjucoOOPbNCc&fref=nf&__xts__[0]=68.ARDF8qpwEQsdZj87600YI2AXEQGehcDNNrKng8c_Pp1U3-T6_BOq5cqrDJY92gmccvi29vHIy8uF3db6KLFWLzux9CgHDXh0cKs6AXs9wjcyesEt3Q5xvHMSJ2EZjkqo3TqTYRHq3rv7jOlASQAy7_AffnGuDbAqukoYCtktLo4DG5w-SxU_E1rqgo0tMjqHYzFRusqeD3YfA2HeKEm8BNtqZm90HYcDaYe_uQfxssaFA9Zcg546F-zmXjIdcPhWyIUEljwKwsWXUcGu3DsS677R8Uu16OTouw5KIx6YRHGH77B58fBPGS3Xp9HBpMIhi5yM2Tf1P3noIpBgrRoPdZg&__tn__=kC-R"><i class="fab fa-facebook-square fa-2x"></i></a>
+         <a href=""><i class="fab fa-instagram fa-2x"></i></a>
+         </div>
+         </div>
+         </div>
+         <div class="copyright mt-2">
+         Moni-K Nails - powered by Franck T.
+         </div>
+         
+        </footer>
+        
+	      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script src="{{ asset('/js/mknails.js') }}"></script>
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

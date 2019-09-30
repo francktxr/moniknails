@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des tarifs{% endblock %}
+
+{% block content %}
+<h1>Gestion des tarifs</h1>
+    <p>Nombre de tarifs : {{ tarifs | length }}</p>
+
+    <div class="row p-1">
+        <a href="{{ path('admin_tarif_add') }}" class="btn btn-success">Ajouter un tarif</a>
+    </div>
+    
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Prestation</th>
+                    <th>Détails</th>
+                    <th>Prix</th>
+                    <th colspan="3">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                        {% for trf in tarifs %}
+            <tr>
+                <td>{{ trf.id }}</td>
+                <td>{{ trf.prestation }}</td>
+                <td>{{ trf.details }}</td>
+                <td>{{ trf.prix }}€</td>
+
+                <td><a href="{{ path('admin_tarif_update', {'id' : trf.id}) }}"><i class="fas fa-edit"></a></i></td>
+                <td><a href="{{ path('admin_tarif_delete', {'id' : trf.id}) }}" onclick="return confirm('Etes-vous certain de vouloir supprimer le tarif ?')"><i class="fas fa-trash"></a></i></td>
+            </tr>
+
+            {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

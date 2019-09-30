@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste galerie{% endblock %}
+
+{% block content %}
+<h1>Gestion de la galerie</h1>
+    <p>Nombre de de photos : {{ galeries | length }}</p>
+
+    <div class="row p-1">
+        <a href="{{ path('admin_galerie_add') }}" class="btn btn-success">Ajouter une photo</a>
+    </div>
+    
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Photo</th>
+                    <th>Titre</th>
+                    <th colspan="3">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                        {% for gal in galeries %}
+            <tr>
+                <td>{{ gal.id }}</td>
+                <td><img src="{{ asset('/photo/' ~ gal.photo) }}" height="70px"></td>
+                <td>{{ gal.titre }}</td>
+
+
+
+                <td><a href="{{ path('admin_galerie_update', {'id' : gal.id}) }}"><i class="fas fa-edit"></a></i></td>
+                <td><a href="{{ path('admin_galerie_delete', {'id' : gal.id}) }}" onclick="return confirm('Etes-vous certain de vouloir supprimer la photo ?')"><i class="fas fa-trash"></a></i></td>
+            </tr>
+
+            {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

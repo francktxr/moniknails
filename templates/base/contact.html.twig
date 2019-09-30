@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Moni-K Nails - Contact{% endblock %}
+
+{% block content %}
+
+<div class="entete pt-4">
+<h1>Contact</h1>
+
+<div class="trait mx-auto my-3"></div>
+          
+    <p><i class="fas fa-phone"></i> : 07 81 80 08 63 <br>Du lundi au samedi de 9h30 à 20h00</p>
+        <p>Pour tout renseignements ou prise de rendez-vous veuillez me contacter par telephone ou via le formulaire ci-dessous.</p><hr>
+        </div> <div class="imageheader"></div>
+        <div class="contact-form col-md-6 col-sm-12 mx-auto mb-5 py-2">
+        {{ form(contactForm) }}                             
+    </div>
+
+{% endblock %}

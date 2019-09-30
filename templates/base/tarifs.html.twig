@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Moni-K Nails - Tarifs{% endblock %}
+
+{% block content %}
+<div class="entete pt-3">
+    <h1>Prestations et Tarifs</h1>
+    <div class="trait mx-auto my-3"></div>
+
+    </div>
+    <div class="tarif col-md-7 col-sm-12 mx-auto py-2 mb-5">
+    {% for trf in tarifs %}
+
+    <p class="bloc">
+ 
+    <span class="gauche"><b>{{ trf.prestation }}</b></span>
+    <span class="droite">{{ trf.prix }} €</span>
+    </p>
+    {% if trf.details %}
+    <p class="details"><small>{{ trf.details }}</small></p>
+    {% endif %}
+    
+    {% endfor %}
+    
+    </div>
+{% endblock %}

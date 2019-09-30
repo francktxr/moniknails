@@ -1,0 +1,12 @@
+<img src="{{ absolute_url(asset('/img/logo.png'))}}" />
+<h3> Mail envoyé par le site : {{ data.objet | raw }}</h3>
+
+<ul>
+    <li>Prénom : {{ data.prenom }}</li>
+    <li>Nom : {{ data.nom }}</li>
+    <li>Email : {{ data.email }}</li>
+</ul>
+<hr>
+<p>
+    {{ data.message | raw }}
+</p>

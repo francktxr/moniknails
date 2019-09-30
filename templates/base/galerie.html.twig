@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Moni-K Nails - Galerie{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+<h1>Galerie</h1>
+<div class="trait mx-auto my-3"></div>
+
+<div class="row">
+{% for gal in galeries %}
+  <div class="col-md-4 mt-5">
+  <div class="picture">
+            {#<a href="{{ asset('/photo/' ~ gal.photo ) }}" class="thumbnail">#}
+                <img src="{{ asset('/photo/' ~ gal.photo ) }}" alt="{{ gal.titre }}"/>
+                <p class="pic-title">{{ gal.titre }}</p>
+            {#</a>#}
+        </div>
+    </div> 
+    {% endfor %}
+  </div>
+  </div>
+{% endblock %}
+
+
+
